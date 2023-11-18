@@ -64,21 +64,7 @@ final class ViewController: UIViewController, UITableViewDataSource {
         
         
         
-        let url: URL = URL(string: "https://fakestoreapi.com/products")!
-        URLSession.shared.dataTask(with: url, completionHandler: { data, response, error in
-            guard
-                let data,
-                error == nil
-            else { return }
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
-            self.itemData = try! decoder.decode([ItemDTO].self, from: data)
-            DispatchQueue.main.async {
-                self.activityIndicator.stopAnimating()
-                self.tableView.reloadData()
-            }
-            
-        }).resume()
+       
     
         
         
@@ -87,13 +73,7 @@ final class ViewController: UIViewController, UITableViewDataSource {
 
 }
 
-struct ItemDTO: Decodable{
-    let id: Int
-    let title: String
-    let price: Double
-    let image: URL
-    
-}
+
 
 extension UIImageView {
     func load(url: URL) {
