@@ -7,38 +7,17 @@
 
 import UIKit
 
-final class ViewController: UIViewController, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        itemData.count
-    }
-    private let activityIndicator: UIActivityIndicatorView = {
-        let indicator = UIActivityIndicatorView(style: .large)
-        indicator.color = .systemPink // Цвет индикатора
-        indicator.translatesAutoresizingMaskIntoConstraints = false
-        return indicator
-    }()
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let item = itemData[indexPath.row]
-        var cell = UITableViewCell()
-        var configuration = cell.defaultContentConfiguration()
-        configuration.image = UIImage()
-        configuration.text = item.title
-        configuration.secondaryText = String(item.price)
-        cell.contentConfiguration = configuration
-        
-        return cell
-    }
+final class ViewController: UIViewController {
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = .systemGray
-        tableView.dataSource = self
+        //tableView.dataSource = self
         return tableView
     }()
     
     
-    private var itemData: [ItemDTO] = []
+   
 
     override func viewDidLoad() {
         super.viewDidLoad()
