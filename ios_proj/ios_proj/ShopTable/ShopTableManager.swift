@@ -15,15 +15,11 @@ final class ShopTableManager: NSObject{
 // MARK: - UIViewDataSourse
 
 extension ShopTableManager: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tableData.count
     }
-    private let activityIndicator: UIActivityIndicatorView = {
-        let indicator = UIActivityIndicatorView(style: .large)
-        indicator.color = .systemPink // Цвет индикатора
-        indicator.translatesAutoresizingMaskIntoConstraints = false
-        return indicator
-    }()
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item = tableData[indexPath.row]
@@ -33,10 +29,9 @@ extension ShopTableManager: UITableViewDataSource {
         configuration.text = item.title
         configuration.secondaryText = String(item.price)
         cell.contentConfiguration = configuration
-        
         return cell
     }
 }
     
     
-}
+

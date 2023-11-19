@@ -6,13 +6,29 @@
 //
 
 import UIKit
+import Foundation
 
-final class ViewController: UIViewController {
+final class ShopTableViewController: UIViewController {
     
+    private lazy var contentView: ShopTableView = {
+        let view = ShopTableView()
+        return view
+    }()
+    
+    private let service = ShopService()
+    
+    override func loadView() {
+        view = contentView
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
-        
+        service.fetchShop { items in
+            DispatchQueue.main.async {
+                self.contentView.configure(with: items)
+                
+            }
+        }
     }
 }
 

@@ -18,6 +18,8 @@ final class ShopTableView: UIView{
     
     private lazy var spinnerView = UIActivityIndicatorView(style: .large)
     
+    private lazy var tableManager = ShopTableManager()
+    
     init(){
         super.init(frame: .zero)
         self.backgroundColor = .white
@@ -31,7 +33,11 @@ final class ShopTableView: UIView{
         fatalError("init(coder:) has not been implemented")
     }
     
-    
+    func configure(with viewModel: [ItemDTO]) {
+        tableManager.tableData = viewModel
+        spinnerView.stopAnimating()
+        tableView.reloadData()
+    }
 }
 
 private extension ShopTableView{
@@ -54,9 +60,5 @@ private extension ShopTableView{
             spinnerView.centerXAnchor.constraint(equalTo: tableView.centerXAnchor),
             spinnerView.centerYAnchor.constraint(equalTo: tableView.centerYAnchor)
         ])
-        
-
-    
-        
     }
 }

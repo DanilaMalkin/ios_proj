@@ -4,6 +4,7 @@
 //
 //  Created by Danila on 18.11.2023.
 //
+import Foundation
 
 struct ItemDTO: Decodable{
     let id: Int

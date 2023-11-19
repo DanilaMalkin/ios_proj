@@ -8,7 +8,7 @@
 import Foundation
 
 final class ShopService{
-    let decodet = JSONDecoder()
+    let decoder = JSONDecoder()
     let session: URLSession = {
         let sessionConfiguration = URLSessionConfiguration.default
         let session = URLSession(configuration: sessionConfiguration)
@@ -18,7 +18,7 @@ final class ShopService{
     }()
     func fetchShop(complitionHandler: @escaping([ItemDTO]) -> Void){
         let url: URL = URL(string: "https://fakestoreapi.com/products")!
-        session.shared.dataTask(with: url, completionHandler: { data, response, error in
+        session.dataTask(with: url, completionHandler: { data, response, error in
             guard
                 let data,
                 error == nil
