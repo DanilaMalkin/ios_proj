@@ -7,60 +7,38 @@
 
 import UIKit
 
+
 class ShopDetailsViewController: UIViewController {
     
     var shopModel: ItemDTO?
     
-    private lazy var stackView: UIStackView = {
-        let view = UIStackView()
-        view.axis = .vertical
-        return view
-    }()
-    
-    private lazy var titleView: UILabel = {
-        let view = UILabel()
-        return view
-    }()
-    
-    private lazy var subtitleView: UILabel = {
-        let view = UILabel()
+    private lazy var contentView: ShopDetailsView = {
+        let view = ShopDetailsView()
+        
         return view
     }()
     
     
-
+    
+    override func loadView() {
+        view = contentView
+   }
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-        view.backgroundColor = .green
-        addSubviews()
-        makeConstrains()
         configure()
         
-
-        // Do any additional setup after loading the view.
     }
-    
-    func addSubviews() {
-        view.addSubview(stackView)
-        stackView.addArrangedSubview(titleView)
-        stackView.addArrangedSubview(subtitleView)
-        
-    }
-    
-    func makeConstrains(){
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-            
-            
-        ])
-    }
-    
     func configure() {
-        titleView.text = shopModel?.title
-        
+            guard let title = shopModel?.title else {
+                print("shopModel?.title is nil")
+                return
+            }
+            contentView.titleView.text = title
     }
+    
+}
     
 
     /*
@@ -73,4 +51,3 @@ class ShopDetailsViewController: UIViewController {
     }
     */
 
-}
