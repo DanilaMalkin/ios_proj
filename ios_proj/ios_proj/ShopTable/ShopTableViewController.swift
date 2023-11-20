@@ -47,7 +47,9 @@ final class ShopTableViewController: UIViewController {
 
 extension ShopTableViewController: ShopTableViewDelegate{
     func didSelectRow(_ shopModel: ItemDTO) {
-        let vc = ShopDetailsViewController()
+        let factory = ShopDetailsViewControllerFactory()
+        
+        let vc = factory.build()
         vc.shopModel = shopModel
         present(vc, animated: true)
         
