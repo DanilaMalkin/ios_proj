@@ -35,6 +35,7 @@ final class ShopTableView: UIView{
     
     func configure(with viewModel: [ItemDTO]) {
         tableManager.tableData = viewModel
+
         spinnerView.stopAnimating()
         tableView.reloadData()
     }

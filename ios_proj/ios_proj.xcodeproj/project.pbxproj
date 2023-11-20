@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		83193AFD2B026FD5005AC68B /* ShopService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83193AFC2B026FD5005AC68B /* ShopService.swift */; };
+		839A50FF2B0AA0A600F4DEEB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 839A50FE2B0AA0A600F4DEEB /* Main.storyboard */; };
 		83C05E232B0942CC00272CB1 /* ItemDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C05E222B0942CC00272CB1 /* ItemDTO.swift */; };
 		83C05E252B09571600272CB1 /* ShopTableManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C05E242B09571600272CB1 /* ShopTableManager.swift */; };
 		83C05E272B095B0400272CB1 /* ShopTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C05E262B095B0400272CB1 /* ShopTableView.swift */; };
@@ -39,6 +40,7 @@
 
 /* Begin PBXFileReference section */
 		83193AFC2B026FD5005AC68B /* ShopService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopService.swift; sourceTree = "<group>"; };
+		839A50FE2B0AA0A600F4DEEB /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		83C05E222B0942CC00272CB1 /* ItemDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDTO.swift; sourceTree = "<group>"; };
 		83C05E242B09571600272CB1 /* ShopTableManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopTableManager.swift; sourceTree = "<group>"; };
 		83C05E262B095B0400272CB1 /* ShopTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopTableView.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				83F3C8742AD443C600CB889F /* SceneDelegate.swift */,
 				83F3C87B2AD443C800CB889F /* Assets.xcassets */,
 				83F3C8802AD443C800CB889F /* Info.plist */,
+				839A50FE2B0AA0A600F4DEEB /* Main.storyboard */,
 			);
 			path = ios_proj;
 			sourceTree = "<group>";
@@ -245,6 +248,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				839A50FF2B0AA0A600F4DEEB /* Main.storyboard in Resources */,
 				83F3C87C2AD443C800CB889F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
