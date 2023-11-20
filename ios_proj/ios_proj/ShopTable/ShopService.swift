@@ -7,30 +7,46 @@
 
 import Foundation
 
-final class ShopService{
-    let decoder = JSONDecoder()
+protocol ShopServicing: AnyObject{
+    func fetchShop(complitionHandler: @escaping([ItemDTO]) -> Void)
+}
+
+final class ShopService {
+    let decoder : JSONDecoder = {
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        return decoder
+    }()
+    
+    
     let session: URLSession = {
         let sessionConfiguration = URLSessionConfiguration.default
         let session = URLSession(configuration: sessionConfiguration)
         return session
         
-        
     }()
-    func fetchShop(complitionHandler: @escaping([ItemDTO]) -> Void){
+}
+
+
+    
+
+extension ShopService : ShopServicing{
+    func fetchShop(complitionHandler: @escaping ([ItemDTO]) -> Void){
         let url: URL = URL(string: "https://fakestoreapi.com/products")!
         session.dataTask(with: url, completionHandler: { data, response, error in
             guard
                 let data,
                 error == nil
             else { return }
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
-            let itemData = try! decoder.decode([ItemDTO].self, from: data)
-            complitionHandler(itemData)
-           
+            
+            let shopData = try! self.decoder.decode([ItemDTO].self, from: data)
+            complitionHandler(shopData)
             
         }).resume()
         
+        
     }
 }
+
+
 

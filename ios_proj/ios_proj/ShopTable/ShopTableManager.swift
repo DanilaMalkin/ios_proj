@@ -7,8 +7,14 @@
 
 import UIKit
 
+protocol ShopTableManagerDelegate {
+    func didSelectRow(_ shopModel : ItemDTO)
+    
+}
+
 
 final class ShopTableManager: NSObject{
+    var delegate: ShopTableManagerDelegate?
     var tableData: [ItemDTO] = []
 }
 
@@ -17,7 +23,7 @@ final class ShopTableManager: NSObject{
 extension ShopTableManager: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tableData.count
+        tableData.count
     }
     
     
@@ -32,6 +38,16 @@ extension ShopTableManager: UITableViewDataSource {
         return cell
     }
 }
+
+extension ShopTableManager : UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let shopModel = tableData[indexPath.row]
+        delegate?.didSelectRow(shopModel)
+    }
+}
+
+
     
     
 

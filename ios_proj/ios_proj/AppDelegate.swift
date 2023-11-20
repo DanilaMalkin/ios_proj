@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  ios_proj
+//  test_ios
 //
-//  Created by Danila on 09.10.2023.
+//  Created by Danila on 02.10.2023.
 //
 
 import UIKit

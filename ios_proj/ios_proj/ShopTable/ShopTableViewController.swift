@@ -9,13 +9,24 @@ import UIKit
 import Foundation
 
 final class ShopTableViewController: UIViewController {
-    
     private lazy var contentView: ShopTableView = {
         let view = ShopTableView()
+        view.delegate = self
         return view
     }()
     
-    private let service = ShopService()
+    private let service : ShopServicing
+    
+    init(service: ShopServicing) {
+        self.service = service
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
     
     override func loadView() {
         view = contentView
@@ -23,6 +34,7 @@ final class ShopTableViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("ViewController viewDidLoad")
         service.fetchShop { items in
             DispatchQueue.main.async {
                 self.contentView.configure(with: items)
@@ -33,18 +45,18 @@ final class ShopTableViewController: UIViewController {
 }
 
 
-
-/*extension UIImageView {
-    func load(url: URL) {
-        DispatchQueue.global().async { [weak self] in
-            if let data = try? Data(contentsOf: url) {
-                if let image = UIImage(data: data) {
-                    DispatchQueue.main.async {
-                        self?.image = image
-                    }
-                }
-            }
-        }
+extension ShopTableViewController: ShopTableViewDelegate{
+    func didSelectRow(_ shopModel: ItemDTO) {
+        let vc = ShopDetailsViewController()
+        vc.shopModel = shopModel
+        present(vc, animated: true)
+        
     }
+    
+    
 }
-*/
+   
+
+   
+
+
